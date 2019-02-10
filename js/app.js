@@ -77,6 +77,10 @@ function removeCourse(e){
 
 function clearCart(e){
 // replace the existing html with blank
-shoppingCartContent.innerHTML = ``;
+// shoppingCartContent.innerHTML = ``;
+// recommended while loop
+while(shoppingCartContent.firstChild){
+    shoppingCartContent.removeChild(shoppingCartContent.firstChild);
+}
     
 }

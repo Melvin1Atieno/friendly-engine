@@ -101,10 +101,34 @@ function getCoursesFromStorage(){
 
 // remove course from the shopping cart
 function removeCourse(e){
+
+    let course, courseId;
+
+    // remove from DOM
     e.preventDefault()
     if(e.target.classList.contains('remove')){
-        e.target.parentElement.parentElement.remove()
+        e.target.parentElement.parentElement.remove();
+        course = e.target.parentElement.parentElement;
+        courseId = course.querySelector('a').getAttribute('data-id');
     }
+    // remove from local storage
+  
+    removeCourseLocalStorage(courseId);
+}
+
+// remove a single item from the local storage
+function removeCourseLocalStorage(id){
+    let coursesLS = getCoursesFromStorage();
+
+    // looop through the array and find the id to be removed
+     coursesLS.forEach(function(courseLS, index){
+         if(courseLS.id === id){
+             coursesLS.splice(index,1);
+         }
+     });
+    //  Add the rest of the array back into the storage
+
+    localStorage.setItem('courses', JSON.stringify(coursesLS))
 }
 
 function clearCart(e){

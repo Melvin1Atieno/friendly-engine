@@ -48,7 +48,7 @@ function addIntoCart(course){
     // dont work with templates')
     row.innerHTML = `
     <tr>
-        <td><img src="${course.image}"></td> 
+        <td><img src="${course.image}" width=100></td> 
         <td>${course.title}</td>  
         <td>${course.price}</td> 
         <td><a href="#" class="remove" data-id="${course.id}">x</a></td> 

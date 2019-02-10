@@ -65,7 +65,36 @@ function addIntoCart(course){
 // add to shopping cart
     shoppingCartContent.appendChild(row); 
 
+// add to storage
+saveIntoStorage(course); 
+
 }
+// add into local storage
+function saveIntoStorage(course){
+    let courses = getCoursesFromStorage();
+
+    // add the course into the array 
+    courses.push(course);
+
+    localStorage.setItem('courses', JSON.stringify(courses));
+
+}
+// Get from local storage
+function getCoursesFromStorage(){ 
+
+    let courses;
+    // if something exists in the storage get the value otherwise create an empty array
+    if (localStorage.getItem('courses') === null){
+        courses = []
+    }
+    else{
+        courses = JSON.parse(localStorage.getItem('courses'));
+    }
+
+    return courses
+
+}
+
 
 // remove course from the shopping cart
 function removeCourse(e){

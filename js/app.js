@@ -114,9 +114,14 @@ function clearCart(e){
 while(shoppingCartContent.firstChild){
     shoppingCartContent.removeChild(shoppingCartContent.firstChild);
 }
-    
+// clear from local storage
+clearLocalStorage();
+
 }
 
+function clearLocalStorage(){
+    localStorage.clear();
+}
 
 // print items to shopping cart when the page loads
 function getFromLocalStorage(){
